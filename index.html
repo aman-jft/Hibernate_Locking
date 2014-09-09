@@ -1,0 +1,64 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+
+<head>
+  <title>ARaynorDesign Template</title>
+  <meta name="description" content="free website template" />
+  <meta name="keywords" content="enter your keywords here" />
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <link rel="stylesheet" type="text/css" href="css/style.css" />
+  <script type="text/javascript" src="js/jquery.min.js"></script>
+  <script type="text/javascript" src="js/jquery.easing.min.js"></script>
+  <script type="text/javascript" src="js/jquery.nivo.slider.pack.js"></script>
+  <script type="text/javascript">
+    $(window).load(function() {
+        $('#slider').nivoSlider();
+    });
+  </script> 
+</head>
+
+<body>
+  
+    <div id="site_content">		
+
+	  <div id="banner_image">
+	    <div id="slider-wrapper">        
+          
+            <img src="images/home_1.jpg" alt="" />
+            
+		 
+		</div><!--close slider_wrapper-->
+	  </div><!--close banner_image-->	
+
+	  <div class="sidebar_container">       
+		    		
+		<div class="sidebar">
+          <div class="sidebar_item">
+            <h2>Code</h2>
+           
+            <p align="right"><a align="right" href="text.com"> <img src="images/download.png" alt="Download Sample Code" /></a></p>         
+		  </div><!--close sidebar_item--> 
+        </div><!--close sidebar-->
+				
+      </div><!--close sidebar_container-->		  
+	 
+	  <div id="content">
+        <div class="content_item">
+		  <h1>Hibernate Locking</h1> 
+	      <p>Hibernate provides two strategies of locking to perform secure read/write operations. Hibernate achieves this by the database locking mechanism and abstains locking object in memory. So basically hibernate depends on database for locking the data. The two terms involved are </p>	  
+		  <div class="content_container"><h2>Optimistic</h2>
+		    <p>This is used by hibernate to prevent from updating the record which is already modified in database. The approach says that there will be a column in table which explains the state of record called Version. It is usually a integer value which got incremented when the record is modified. By annotating the int type property of a persistence class with @Version will help hibernate to identify the version field.
+When we try to update a record of table having version field and already its value is modified then it will throw a exception :
+
+<br>
+<b>org.hibernate.StaleObjectStateException: Row was updated or deleted by another transaction (or unsaved-value mapping was incorrect)</b><br/>
+Instead of int value, we can use Timestamp for same. Just define a property of Date type and annotate it with @Version. Now the Timestamp will be store the date & time when the record is created or last updated and also served the functionality of validating state of record.</p>
+		  	
+		  </div><!--close content_container-->
+          <div class="content_container"><h2>Pessimistic</h2>
+		    <p>The above approach did not provide the proper locking in terms of database. It was just prevent database to update dirty record. But in case of concurrently reading data and updating it will always cause error because most of the time thread will pick the value which will be updated by another thread. In these type of cases we need to lock the record so that no other transaction will access it until the current transaction will be done with the record. We can use <b>LockMode.UPGRADE</b> to accomplish this successfully</p>          
+		  			  
+		  </div><!--close content_container-->		
+		  
+</body>
+</html>
