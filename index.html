@@ -2,13 +2,17 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
 
 <head>
-  <title>Hibernate Locking</title>
-  <meta name="description" content="Hibernate supports two type of locking optimistic and Pessimistic. To perform concurrent operation on data." />
+  <title>How to perform hibernate locking?</title>
+  <meta name="description" content="There are two strategies of performing hibernate locking i.e. Optimistic and Pessimistic. Both these strategies are explained in this post through the code." />
   <meta name="keywords" content="hibernate locking" />
   <meta http-equiv="content-type" content="text/html; charset=utf-8" />
   <link rel="stylesheet" type="text/css" href="css/style.css" />
+<style>
+div{
+text-align:justify;
+}
+</style>
 </head>
-
 <body>
   
     <div id="site_content">		
@@ -26,9 +30,9 @@
 		    		
 		<div class="sidebar">
           <div class="sidebar_item">
-            <h2>Code</h2>
-           
-            <p align="right"><a align="right" href="https://github.com/aman-jft/Hibernate_Locking"> <img src="images/download.png" alt="Download Sample Code" /></a></p>         
+           <h2> GitHub Link</h2> 
+           <div class="imgBox"><p align="right"> 
+            <a href="https://github.com/aman-jft/Hibernate_Locking"> <img src="images/download.png" alt="Download Sample Code" /></a>     </p></div>  
 		  </div><!--close sidebar_item--> 
         </div><!--close sidebar-->
 				
@@ -37,18 +41,18 @@
 	  <div id="content">
         <div class="content_item">
 		  <h1>Hibernate Locking</h1> 
-	      <p>Hibernate provides two strategies of locking to perform secure read/write operations. Hibernate achieves this by the database locking mechanism and abstains locking object in memory. So basically hibernate depends on database for locking the data. The two terms involved are </p>	  
-		  <div class="content_container"><h2>Optimistic</h2>
-		    <p>This is used by hibernate to prevent from updating the record which is already modified in database. The approach says that there will be a column in table which explains the state of record called Version. It is usually a integer value which got incremented when the record is modified. By annotating the int type property of a persistence class with @Version will help hibernate to identify the version field.
-When we try to update a record of table having version field and already its value is modified then it will throw a exception :
+	      <p>Hibernate provides two strategies of locking for performing secure read/write operations. Hibernate achieves this by database locking mechanism and abstains locking object in memory. So, basically hibernate locking depends on database for there operations. The two terms involved are as follows :</p>	  
+		  <div class="content_item"><h3>Optimistic</h3>
+		    <p>This is used by hibernate to prevent from updating the record which is already modified in database. The approach says that there will be a column in table which explains the state of record called Version. It is usually a integer value which increments when the record is modified. By annotating the int type property of a persistence class with @Version will help hibernate to identify the version field.
+Hibernate simply compares the value of version field. If the updating record has version value less the the database record value, then it will throw an exception :
 
 <br>
 <b>org.hibernate.StaleObjectStateException: Row was updated or deleted by another transaction (or unsaved-value mapping was incorrect)</b><br/>
-Instead of int value, we can use Timestamp for same. Just define a property of Date type and annotate it with @Version. Now the Timestamp will be store the date & time when the record is created or last updated and also served the functionality of validating state of record.</p>
+Instead of int value, we can use Timestamp for same. Just define a property of Date type and annotate it with @Version. Now, the field will store the date & time when a new record is to create or modify the existing one, and also served the functionality of validating state of record.</p>
 		  	
 		  </div><!--close content_container-->
-          <div class="content_container"><h2>Pessimistic</h2>
-		    <p>The above approach did not provide the proper locking in terms of database. It was just prevent database to update dirty record. But in case of concurrently reading data and updating it will always cause error because most of the time thread will pick the value which will be updated by another thread. In these type of cases we need to lock the record so that no other transaction will access it until the current transaction will be done with the record. We can use <b>LockMode.UPGRADE</b> to accomplish this successfully</p>          
+          <div class="content_item"><h3>Pessimistic</h3>
+		    <p>The above approach did not provide the proper locking in terms of database. It was just to prevent database to update dirty records. In concurrently reading and updating data, it will always cause error because most of the time threads will pick the records which have been updated by another threads. In these type of cases, we need to lock the record so that no other transaction will access it until the current transaction gets complete. We use <b>LockMode.UPGRADE</b> to perform hibernate locking in parallel transaction mode.</p>          
 		  			  
 		  </div><!--close content_container-->		
 		  

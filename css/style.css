@@ -18,7 +18,11 @@ p
   font-size: 100% }
 
 img
-{ border: 0;}
+{ border: 0;
+
+}
+
+ .imgBox img:hover { width:125px; height:125px;} 
 
 h1, h2, h3, h4, h5, h6 
 { font: normal 175% Arial, Helvetica, sans-serif;
@@ -139,17 +143,18 @@ ul#menu li.current a, ul#menu li:hover a
 
 .sidebar_container
 { float: right;
-  width: 320px;
+  width: 220px;
   padding: 0;}
 
 .sidebar
 { float: left;
-  width: 320px;
+  width: 220px;
   margin-bottom: 10px;}
+
 
 .sidebar_item
 { font: normal 100% Arial, Helvetica, sans-serif;
-  width: 320px;}
+  width: 220px;}
 
 .sidebar h2
 { padding: 5px 0 0 10px;
@@ -335,7 +340,7 @@ ul#menu li.current a, ul#menu li:hover a
   
   
 #banner_image {
-	width: 920px;
+	width: 720px;
 	height: 430px;
 	float: left;
 	margin: 20px 0 0 0;
@@ -344,7 +349,7 @@ ul#menu li.current a, ul#menu li:hover a
 #slider-wrapper {
     height: 400px;
 	background: transparent;
-	width: 920px;
+	width: 720px;
 }
 #slider {
     background: url("../images/loading.gif") no-repeat scroll 50% 50% transparent;
