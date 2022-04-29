@@ -7,7 +7,7 @@ html
 
 body
 { font: normal 85% Arial, Helvetica, sans-serif;
-  background: #1d1d1d url(../images/background.jpg) repeat;
+  background: #1d1d1d;
   color: #000;
 }
 
